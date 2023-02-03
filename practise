@@ -1,0 +1,38 @@
+/*The albums of the artist called Led Zeppelin*/
+SELECT *
+FROM albums
+WHERE ArtistId IN (SELECT ArtistId
+                   FROM artists
+                   WHERE Name="Led Zeppelin")
+/*----------------------------------------------------------------------------------*/
+
+/*Creating a list of album titles and the unit prices for the artist "Audioslave".*/
+
+SELECT ar.Name, al.Title, tr.UnitPrice
+FROM artists as ar
+INNER JOIN albums as al
+ON ar.ArtistId=al.ArtistId
+INNER JOIN tracks as tr
+ON tr.AlbumId=al.AlbumId
+WHERE ar.Name="Audioslave"
+/*----------------------------------------------------------------------------------*/
+
+/*Finding the first and last name of any customer who does not have an invoice.*/
+
+SELECT c.FirstName, c.LastName, i.InvoiceId
+FROM customers as c
+LEFT JOIN invoices as i
+WHERE InvoiceId is NULL
+/*----------------------------------------------------------------------------------*/
+
+/*The total price for the album “Big Ones” */
+
+SELECT a.Title, a.AlbumId, t.UnitPrice, COUNT(a.AlbumId)*t.UnitPrice as total_price
+FROM albums as a
+INNER JOIN tracks as t
+ON a.AlbumId=t.AlbumId
+WHERE a.Title="Big Ones"
+
+/*----------------------------------------------------------------------------------*/
+
+
