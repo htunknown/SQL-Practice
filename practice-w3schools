@@ -1,0 +1,40 @@
+/* EXAMPLES */
+
+/* 1) (INNER) JOIN */
+
+SELECT OD.OrderDetailID, O.OrderID, OD.Quantity, O.CustomerID, 
+C.CustomerName, P.ProductID, P.ProductName, O.EmployeeID, 
+E.FirstName as Employee_Name, O.OrderDate, O.ShipperID, 
+S.ShipperName, S.Phone as Shipper_Phone
+FROM OrderDetails as OD
+INNER JOIN Orders as O
+ON OD.OrderID=O.OrderID
+INNER JOIN Products as P
+ON OD.ProductID=P.ProductID
+INNER JOIN Customers as C
+ON O.CustomerID=C.CustomerID
+INNER JOIN Employees as E
+ON O.EmployeeID=E.EmployeeID
+INNER JOIN Shippers as S
+ON O.ShipperID=S.ShipperID
+/*-------------------------------------------------------------------------*/
+
+/* 2) UNION / UNION ALL */
+
+SELECT City, PostalCode, Country, Count(Country) as number FROM Customers
+UNION
+SELECT City,PostalCode, Country, Count(Country) as number FROM Suppliers
+GROUP BY Country
+ORDER BY Country
+/*-------------------------------------------------------------------------*/
+
+/* 3) LEFT JOIN */
+
+SELECT C.CustomerName, C.Country as Location, O.OrderDate, COUNT(C.Country) as number
+FROM Customers as C
+LEFT JOIN Orders as O
+ON C.CustomerID=O.CustomerID
+GROUP BY Location
+/*-------------------------------------------------------------------------*/
+
+/* 4) */
