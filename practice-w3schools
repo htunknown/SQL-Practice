@@ -16,7 +16,7 @@ ON O.CustomerID=C.CustomerID
 INNER JOIN Employees as E
 ON O.EmployeeID=E.EmployeeID
 INNER JOIN Shippers as S
-ON O.ShipperID=S.ShipperID
+ON O.ShipperID=S.ShipperID;
 /*-------------------------------------------------------------------------*/
 
 /* 2) UNION / UNION ALL */
@@ -25,7 +25,7 @@ SELECT City, PostalCode, Country, Count(Country) as number FROM Customers
 UNION
 SELECT City,PostalCode, Country, Count(Country) as number FROM Suppliers
 GROUP BY Country
-ORDER BY Country
+ORDER BY Country;
 /*-------------------------------------------------------------------------*/
 
 /* 3) LEFT JOIN */
@@ -34,7 +34,111 @@ SELECT C.CustomerName, C.Country as Location, O.OrderDate, COUNT(C.Country) as n
 FROM Customers as C
 LEFT JOIN Orders as O
 ON C.CustomerID=O.CustomerID
-GROUP BY Location
+GROUP BY Location;
 /*-------------------------------------------------------------------------*/
 
-/* 4) */
+/* 4) LIMITING RECORDS WITH A SPESIFIC NUMBER */
+/* Limiting all of the records in OrderDetails table with 20 */
+
+SELECT *
+FROM OrderDetails
+LIMIT 20;
+/*-------------------------------------------------------------------------*/
+
+/* 5) WHERE */
+/* Finding OrderDetails in which the quantity is more than 50 */ 
+
+SELECT *
+FROM OrderDetails
+WHERE Quantity>50
+/*-------------------------------------------------------------------------*/
+
+/* 6) BETWEEN */
+/* Finding OrderDetails for OrderID is betweeen 10300 and 10320 */
+
+SELECT *
+FROM OrderDetails
+WHERE OrderID BETWEEN 10300 AND 10320
+/*-------------------------------------------------------------------------*/
+
+/* 7) IN */
+/* Finding orderIDs (10300, 10320, 10330, 10340) from OrderDetails table */
+
+SELECT *
+FROM OrderDetails
+WHERE OrderID IN(10300,10320,10330,10340)
+/*-------------------------------------------------------------------------*/
+
+/* 8) LIKE */
+/* Customers whose name contain "ar" letters in their names */
+
+SELECT *
+FROM Customers
+WHERE CustomerName LIKE "%ar%"
+/*-------------------------------------------------------------------------*/
+
+/* 9) ORDER BY */
+/* Finding all of customers' informations and sorting them according to their countries alphabetically in a reverse way */
+SELECT *
+FROM Customers
+ORDER BY Country DESC
+/*-------------------------------------------------------------------------*/
+
+/* 10) GROUP BY */
+/* Finding the number of customers for each country */
+
+SELECT Country, COUNT(CustomerID) AS total_customer
+FROM Customers
+GROUP BY Country
+/*-------------------------------------------------------------------------*/
+
+/* 11) GROUP BY & HAVING & COUNT() */
+/* (Note!: WHERE cannot be used with GROUP BY, Instead HAVING is used to filter data)*/
+/* Finding the countries which have more than 5 customers and sort these alphabetically */
+
+SELECT Country, COUNT(CustomerID) AS total_customer
+FROM Customers
+GROUP BY Country
+HAVING total_customer>5
+ORDER BY total_customer
+/*-------------------------------------------------------------------------*/
+
+/* 12) Subquery */
+/* All details of the customers whose quantity is more than 80 from Orders table */
+/*Hint!: Here, using "IN" is better than using "=" due to the fact that more than one records related to query can be found in this way. */
+
+# SELECT CustomerID
+FROM Orders
+WHERE OrderID IN(SELECT OrderID
+                 FROM OrderDetails
+                 WHERE Quantity>80)
+/*-------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
