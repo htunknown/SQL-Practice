@@ -105,14 +105,16 @@ ORDER BY total_customer
 
 /* 12) Subquery */
 /* All details of the customers whose quantity is more than 80 from Orders table */
-/*Hint!: Here, using "IN" is better than using "=" due to the fact that more than one records related to query can be found in this way. */
+/*Note!: Here, using "IN" is better than using "=" due to the fact that more than one records related to query can be found in this way. 
+Otherwise, only 1 record is returned. */
 
-# SELECT CustomerID
+SELECT CustomerID
 FROM Orders
 WHERE OrderID IN(SELECT OrderID
                  FROM OrderDetails
                  WHERE Quantity>80)
 /*-------------------------------------------------------------------------*/
+
 
 
 
