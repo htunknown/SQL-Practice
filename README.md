@@ -13,7 +13,7 @@ The queries were written according to the database indicated in the picture belo
 
 # FOR W3SCHOOLS <br />
 The queries were written according to the database indicated in the picture below.
-![W3Schools Tables](https://tinypic.host/images/2023/02/04/Tables-and-Relations.png "W3Schools")
+![W3Schools ER Diagram](https://tinypic.host/images/2023/02/06/ER_w3schools.png "W3Schools")
 
 
 
