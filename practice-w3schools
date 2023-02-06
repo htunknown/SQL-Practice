@@ -121,8 +121,8 @@ WHERE OrderID IN(SELECT OrderID
 SELECT *
 FROM Employees
 WHERE EmployeeID IN(SELECT EmployeeID
-					          FROM Orders
+		    FROM Orders
                     WHERE OrderID IN(SELECT OrderID
-                    				         FROM OrderDetails
+				     FROM OrderDetails
                                      WHERE Quantity>80))
 /*-------------------------------------------------------------------------*/
