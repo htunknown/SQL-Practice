@@ -4,7 +4,7 @@ There are some queries that I wrote, while working on SQL.
 
 # FOR COURSERA - [queries](https://github.com/htunknown/SQL-Practice/blob/main/practice-coursera "Coursera Queries")    <br />
 The queries were written according to the database indicated in the picture below. <br />
-![Coursera ER Diagram](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/UAPENoOVEei4RQ5L9j9nDA_5042a1f0839511e8beb2b5b4ae9fa29a_ER-Diagram.png?expiry=1675641600000&hmac=0gk8IhvIKcuw4NlwtQl4GFLEjCqbYLUaISbFgA7eiug "W3Schools")
+![Coursera ER Diagram](https://tinypic.host/images/2023/02/06/68747470733a2f2f643363333368636769776576332e636c6f756466726f6e742e6e65742f696d616765417373657450726f78792e76312f554150454e6f4f56456569345251354c396a396e44415f35303432613166303833393531316538.png "W3Schools")
 
 
 
