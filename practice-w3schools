@@ -115,32 +115,14 @@ WHERE OrderID IN(SELECT OrderID
                  WHERE Quantity>80)
 /*-------------------------------------------------------------------------*/
 
+/* 13) Subquery in Subquery */
+/* All the details of the employees who sold more than 80 from the same product at the same time*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+SELECT *
+FROM Employees
+WHERE EmployeeID IN(SELECT EmployeeID
+					          FROM Orders
+                    WHERE OrderID IN(SELECT OrderID
+                    				         FROM OrderDetails
+                                     WHERE Quantity>80))
+/*-------------------------------------------------------------------------*/
