@@ -13,7 +13,7 @@ The queries were written according to the database indicated in the picture belo
 
 # FOR W3SCHOOLS <br />
 The queries were written according to the database indicated in the picture below.
-The accuracy of the queries in this section can be checked by pasting the queries to the "try it yourself" part through [the link](https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_all "w3schools SQL")
+The accuracy of the queries in this section can be checked by trying through [the link](https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_all "w3schools SQL")
 
 ![W3Schools ER Diagram](https://tinypic.host/images/2023/02/06/ER_w3schools.png "W3Schools")
 
