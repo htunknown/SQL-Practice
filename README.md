@@ -16,5 +16,5 @@ The queries were written according to the database indicated in the picture belo
 ![W3Schools ER Diagram](https://tinypic.host/images/2023/02/06/ER_w3schools.png "W3Schools")
 
 
-
+![W3Schools Tables](https://tinypic.host/images/2023/02/06/Tables-and-Relations.png "W3Schools")
 
