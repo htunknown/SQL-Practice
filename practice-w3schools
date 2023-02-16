@@ -137,7 +137,19 @@ ON c.CustomerID=o.CustomerID
 WHERE OrderID IS NULL
 /*-------------------------------------------------------------------------*/
 
-/* 15) 
+/* 15) CASE */
+/* Creating a new column acording to demand of each product as low, medium, high for exact amounts */
+
+SELECT *,
+CASE
+WHEN Quantity<10 THEN "low"
+WHEN Quantity>=10 AND Quantity<=30 THEN "medium"
+WHEN Quantity>30 THEN "high"
+ELSE "ERROR"
+END DEMAND
+FROM OrderDetails
+/*-------------------------------------------------------------------------*/
+
 
 
 
