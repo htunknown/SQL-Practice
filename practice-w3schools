@@ -94,7 +94,7 @@ WHERE EmployeeID IN(SELECT EmployeeID
 
 SELECT OD.OrderDetailID, O.OrderID, OD.Quantity, O.CustomerID, 
 C.CustomerName, P.ProductID, P.ProductName, O.EmployeeID, 
-E.FirstName as Employee_Name, O.OrderDate, O.ShipperID, 
+CONCAT(E.FirstName," ",E.LastName) as Employee_Name, O.OrderDate, O.ShipperID, 
 S.ShipperName, S.Phone as Shipper_Phone
 FROM OrderDetails as OD
 INNER JOIN Orders as O
