@@ -150,6 +150,23 @@ END DEMAND
 FROM OrderDetails
 /*-------------------------------------------------------------------------*/
 
+/* 16) VIEW */
+/* Creating a table which consists of people whose names contain "ar" letters live in th USA by creating view */
+
+/* ///////////////// I.PART: Creating View ///////////////// */
+CREATE VIEW my_view
+AS
+SELECT *
+FROM Customers
+WHERE Country="USA"
+/*////////////////////////////////////////////////////////// */
+
+/* //////////////// II.PART: Finding people //////////////// */
+SELECT *
+FROM my_view
+WHERE ContactName LIKE "%ar%"
+/* ///////////////////////////////////////////////////////// */
+/*-------------------------------------------------------------------------*/
 
 
 
