@@ -151,7 +151,7 @@ FROM OrderDetails
 /*-------------------------------------------------------------------------*/
 
 /* 16) VIEW */
-/* Creating a table which consists of people whose names contain "ar" letters live in th USA by creating view */
+/* Creating a table which consists of people whose names contain "ar" letters live in the USA by creating view */
 
 /* ///////////////// I.PART: Creating View ///////////////// */
 CREATE VIEW my_view
@@ -168,7 +168,15 @@ WHERE ContactName LIKE "%ar%"
 /* ///////////////////////////////////////////////////////// */
 /*-------------------------------------------------------------------------*/
 
+/* 17) DATE & TIME */
+/* Creating a specific date as year,month,day in the different colomns and today's date with time in the different colomns respectively */
 
+SELECT STRFTIME("%Y","1996-07-15") AS YEAR,
+STRFTIME("%m","1996-07-15") AS MONTH,
+STRFTIME("%d","1996-07-15") AS DAY,
+DATE("NOW") AS DATE,
+STRFTIME("%H:%M:%S", "NOW") AS TIME;
+/*-------------------------------------------------------------------------*/
 
 
 
