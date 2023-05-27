@@ -1,29 +1,31 @@
-Finding all column names in a table:
+#Finding all column names in a table:
 SELECT COLUMN_NAME
 FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_NAME = 'gender_statistics'
 
-Finding specific column name:
+
+#Finding specific column name:
 SELECT COLUMN_NAME
 FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_NAME = 'gender_statistics' and ORDINAL_POSITION=2
 
-Taking rows one by one:
+
+#Taking rows one by one:
 WHILE (@row_counter<@all_count)
 BEGIN
-
 DECLARE @row_value nvarchar(50)
 SET @row_value = (SELECT DISTINCT column_name FROM table_name ORDER BY city OFFSET @row_counter ROWS FETCH
 NEXT 1 ROW ONLY)
-
 SET @row_counter += 1
 END
 
-Using a subquery by variable name:
+
+#Using a subquery by variable name:
 DECLARE @subquery int/nvarchar(50)/...
 SET @subquery = (SELECT id FROM ids)
 
-While loop:
+
+#While loop:
 WHILE (@row_counter<@all_count)
 BEGIN
 .
@@ -32,13 +34,14 @@ BEGIN
 SET @row_counter=@row_counter+1
 END
 
-Adding value to a specific cell to exist table:
 
+#Adding value to a specific cell to exist table:
 UPDATE table_name
 SET column_name_for_value = new_value
 WHERE column_name_for_row= 'row value'
 
-Dynamic stored procedure:
+
+#Dynamic stored procedure:
 /* declaring nvarchar value */
 DECLARE @column_medal_id nvarchar(50)
 SET @column_medal_id = (SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'normalized_events' and ORDINAL_POSITION=12)
@@ -47,26 +50,23 @@ SET @column_name = (SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TAB
 PRINT @column_name
 DECLARE @column_sex nvarchar(50)
 SET @column_sex = (SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'normalized_events' and ORDINAL_POSITION=2)
-
 /* declaring integer value */
 DECLARE @value int
 SET @value = (SELECT COUNT(medal_id) FROM normalized_events WHERE medal_id=(SELECT medal_id FROM medals WHERE medal_type=@column_name) and sex=@row_name)
-
-
-
 DECLARE @query nvarchar(max)
-
 SET @query = N'SELECT * FROM normalized_events WHERE ['+ @column_medal_id +'] = (SELECT medal_id FROM medals WHERE medal_type= @column_name and ['+ @column_sex +'] = @row_name ); '
-
-
 EXEC sp_executesql @query, N'@column_medal_id nvarchar(50),@column_name nvarchar(50), @column_sex nvarchar(50), @row_name nvarchar(50)',@column_medal_id,@column_name,@column_sex,@row_name;
 -----------------------------------------------------------------------------------
+###################################################################################
 ['+ @column_medal_id +'] => WHERE column_medal_id = 
 (Note: be careful about punctuation, or you get error in query)
 
 @column_name => SELECT column_name FROM 
+###################################################################################
 -----------------------------------------------------------------------------------
-SELECT – CASE 
+
+
+#SELECT – CASE 
 SELECT OrderID, Quantity,
 CASE
     WHEN Quantity > 30 THEN 'The quantity is greater than 30'
@@ -74,44 +74,41 @@ CASE
     ELSE 'The quantity is under 30'
 END AS QuantityText
 FROM OrderDetails;
-
 IF ELSE
 IF (@counter<3)
 	BEGIN
-
 END
-
 ELSE IF (@counter=3)
 	BEGIN
-
 	END
-
 ELSE
 	BEGIN
-
 	END
 
-Changing the decimal of an average
+
+#Changing the decimal of an average
 CONVERT(DECIMAL(10,2),AVG(Age))
 
-Finding the data type of a variable
+
+#Finding the data type of a variable
 SELECT SQL_VARIANT_PROPERTY(@VARIABLE_NAME, 'BaseType') AS Data_Type;
 Deleting all values in a specific column
 UPDATE table_name
 SET column_name=NULL
 
-Changing table name
+
+#Changing table name
 sp_rename 'db_name.old_table_name', 'new_table_name'
 
 
-
-Median Value
+#Median Value
 SELECT age AS median_age
 FROM normalized_events
 ORDER BY age OFFSET(SELECT COUNT(*) / 2 FROM normalized_events) ROWS
 FETCH NEXT 1 ROWS ONLY
 
-Creating Histogram
+
+#Creating Histogram
 SELECT age
 	,COUNT(*) AS count
 	,REPLICATE('*', LOG(COUNT(*))) AS star
