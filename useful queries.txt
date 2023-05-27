@@ -101,6 +101,13 @@ SET column_name=NULL
 sp_rename 'db_name.old_table_name', 'new_table_name'
 
 
+#Inserting values to a new table
+SELECT *
+INTO newtable [IN externaldb]
+FROM oldtable
+WHERE condition;
+
+
 #Median Value
 SELECT age AS median_age
 FROM normalized_events
@@ -117,8 +124,13 @@ GROUP BY age
 ORDER BY age
 
 
-
-
+#counting from different tables in different columns in join
+SELECT COUNT(*) AS TotalCountTable1,
+       COUNT(*) AS TotalCountTable2
+FROM Table1
+JOIN Table2 ON Table1.JoinColumn = Table2.JoinColumn
+WHERE Table1.Condition = 'SomeValue' AND Table2.Condition = 'AnotherValue'
+GROUP BY Table1.JoinColumn, Table2.JoinColumn;
 
 
 
